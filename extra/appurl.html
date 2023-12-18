@@ -1,0 +1,82 @@
+<body>
+<script>
+(async () => {
+const base64Url = base64 => `data:;base64,${base64}`;
+
+let text = await (await fetch("../dist/client/index.html")).text();
+
+const faviconBuffer = await (await fetch("../dist/client/img/favicon.png")).arrayBuffer();
+
+text = text.replace('<link rel="icon" type="image/png" href="img/favicon.png">', 
+	`<link rel="icon" type="image/png" href="${base64Url(btoa(String.fromCharCode(...new Uint8Array(faviconBuffer))))}">`);
+
+// https://leanrada.com/notes/compressing-websites-into-urls
+async function createHTML(text, xor) {
+	let blob = new Blob([text]);
+	if(xor) {
+		const encoder = new TextEncoder(text);
+		const ua = encoder.encode(text);
+		const xa = encoder.encode(xor);
+		for(let i=0; i<ua.length; i++)
+			ua[i] ^= xa[i % xa.length];
+		blob = new Blob([ua]);
+	}
+
+	const compression = new CompressionStream("deflate-raw");
+	const compressed = await new Response(blob.stream().pipeThrough(compression)).arrayBuffer();
+	const base64 = btoa(String.fromCharCode(...new Uint8Array(compressed)));
+
+	let result = "<script>"
+		+ `fetch("${base64Url(base64)}")`
+		+ ".then(a=>new Response(a.body.pipeThrough(new DecompressionStream('deflate-raw')))";
+
+	if(xor) {
+		result += ".arrayBuffer().then(a=>{"
+				+ "let b=new Uint8Array(a);"
+				+ "let c=new TextEncoder().encode(decodeURIComponent(document.location.hash.substring(1)));"
+				+ "for(let i=0;i<b.length;i++)"
+					+ "b[i]^=c[i%c.length];"
+				+ "let d=document;d.open();d.write(new TextDecoder().decode(b));d.close()"
+			+ "})";
+	} else {
+		result += ".text().then(a=>{let d=document;d.open();d.write(a);d.close()})";
+	}
+
+	return result + ")<"+"/script>";
+}
+
+const html = await createHTML(text);
+const dataUrl = `data:text/html,${html}`;
+const loadhashUrl = `https://loadhash.glitch.me/#${encodeURIComponent(html)}`;
+
+function create(type, text) {
+	const result = document.createElement(type);
+	if(text !== undefined)
+		result.textContent = text;
+	return result;
+}
+
+function createBookmark(url, info) {
+	const a = create("a", "Ymovie");
+	a.href = url;
+
+	const result = create("p");
+	result.append(a, create("span", ` - ${info} (${url.length} bytes)`));
+	return result;
+}
+
+const textarea = create("textarea");
+textarea.style.width = "100%";
+textarea.style.height = "10em";
+
+const xorInput = create("input");
+xorInput.placeholder = "set password";
+xorInput.oninput = async () => textarea.value = await createHTML(text, xorInput.value);
+
+document.body.append(
+	createBookmark(dataUrl, "data: bookmark"),
+	createBookmark(loadhashUrl, "loadhash bookmark"),
+	xorInput, textarea);
+
+})();
+</script>

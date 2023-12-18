@@ -1,0 +1,756 @@
+.WebshareSetup input[type=text],
+.TVSetup input[type=text],
+.KodiSetup input[type=text],
+.WebshareSetup input[type=password],
+.KodiSetup input[type=password] {
+	line-height: 1.8em;
+}
+
+.WebshareSetup input[type=submit],
+.TVSetup input[type=submit],
+.KodiSetup input[type=submit] {
+	background-image: var(--image-play);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 30px;
+	height: 30px;
+	border: none;
+	background-color: transparent;
+	text-indent: -9999px;
+	overflow: hidden;
+	vertical-align: top;
+	cursor: pointer;
+	padding: 0;
+}
+
+.WebshareSetup.loading input[type=submit],
+.KodiSetupForm.loading input[type=submit] {
+	background-image: var(--image-spinner) !important;
+}
+
+.WebshareSetup .error,
+.KodiSetup .error {
+	color: var(--color1);
+	margin: 5px 0 0 0;
+	display: block;
+}
+
+.WebshareSetup .error::before,
+.KodiSetup .error::before {
+	content: "Error: ";
+	font-weight: bold;
+}
+
+.WebshareSetup p,
+.TVSetup p,
+.KodiSetup p {
+	color: #999;
+	margin: 10px 0 0 0;
+}
+
+.WebshareSetup p strong,
+.TVSetup p strong,
+.KodiSetup p strong {
+	white-space: nowrap;
+}
+
+.WebshareSetup,
+.TVSetup {
+	margin: 0 0 30px 0;
+}
+
+.WebshareSetup input[type=text],
+.WebshareSetup input[type=password] {
+	width: calc(50% - 25px);
+	margin-right: 10px;
+}
+
+.WebshareSetup input.token {
+	width: calc(100% - 40px);
+	color: #ffffff80;
+}
+
+.webshare-ok .WebshareSetup input[type=submit],
+.kodi-ok .KodiSetupForm.position1 input[type=submit],
+.kodi2-ok .KodiSetupForm.position2 input[type=submit] {
+	background-image:  var(--image-ok);
+}
+
+.WebshareSetup .clear {
+	text-indent: -9999px;
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+	background-size: 100%;
+	cursor: pointer;
+	background-image: var(--image-clear);
+	opacity: .5;
+	margin: 0 15px 0 -35px;
+	line-height: 2.2em;
+}
+
+.TVSetup input[type=text],
+.KodiSetup input[type=text] {
+	width: calc(100% - 40px);
+	margin-right: 10px;
+}
+
+.TVSetup.disabled input,
+.TVSetup.disabled p {
+	display: none;
+}
+
+.TVSetup.disabled::after {
+	color: #999;
+	content: "Available after Webshare authentication.";
+}
+
+.DiscoveryHeader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	padding: 20px 20px 0 20px;
+}
+
+.DiscoveryHeader,
+.DiscoveryHeader .menu .container {
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	background: rgba(0, 0, 0, .7);
+}
+
+.DiscoveryHeader input {
+	width: calc(100% - 40px);
+}
+
+.DiscoveryHeader .home {
+	position: absolute;
+	right: 60px;
+	top: 20px;
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	background-size: 20px;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	background-image: var(--image-clear);
+	opacity: .5;
+}
+
+.DiscoveryHeader .menu {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+.DiscoveryHeader .menu .menuButton {
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	background-size: 100%;
+	cursor: pointer;
+	background-image: var(--image-menu);
+}
+
+.DiscoveryHeader .menu .container {
+	position: absolute;
+	right: -10px;
+	top: 38px;
+	padding: 10px;
+	transition: opacity .3s ease-in-out;
+	border-top: 1px dashed #666;
+}
+
+.DiscoveryHeader .menu .container button {
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	background-size: 100%;
+	cursor: pointer;
+	display: block;
+}
+
+.DiscoveryHeader .menu .setup {
+	background-image: var(--image-configure);
+	margin: 0 0 15px;
+}
+
+.DiscoveryHeader .menu .about {
+	background-image: var(--image-about);
+}
+
+.DiscoveryHeader .menu:not(.expanded) .container {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.SearchForm input {
+	font-size: 2em;
+	padding-right: 30px;
+}
+
+.Catalogue {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	padding-top: 50px;
+	transition: opacity .3s ease-in-out;
+}
+
+.DiscoveryView.type-webshare .Catalogue {
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.loading .Catalogue {
+	opacity: 0;
+}
+
+.Catalogue.empty,
+.Catalogue.error {
+	color: var(--color1);
+	display: block;
+}
+
+.CatalogueItem {
+	padding-bottom: 150%;
+	float: left;
+	position: relative;
+	background: #222;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.DiscoveryView.type-home .CatalogueItem {
+	padding-bottom: 80%;
+}
+
+.DiscoveryView.type-webshare .CatalogueItem {
+	padding-bottom: 56%;
+}
+
+.CatalogueItem:not(.loaded) img {
+	opacity: 0;
+}
+
+.CatalogueItem.loaded img {
+	animation: fadein .5s;
+}
+
+.CatalogueItem img {
+	position: absolute;
+	width: 100%;
+}
+
+.CatalogueItem img.error,
+.CatalogueItem img.missing {
+	width: 50%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.DiscoveryView.type-webshare .CatalogueItem img.error,
+.DiscoveryView.type-webshare .CatalogueItem img.missing {
+	width: 40%;
+}
+
+.CatalogueItem .name {
+	font-weight: bold;
+	overflow-wrap: break-word;
+}
+
+.CatalogueItem .name::after {
+	content: " ";
+}
+
+.CatalogueItem .title {
+	position: absolute;
+	bottom: 0;
+	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+	left: 0;
+	right: 0;
+	padding: 100px 5px 5px 5px;
+	text-shadow: 2px 2px #000;
+}
+
+.DiscoveryView.type-home .CatalogueItem .title {
+	padding-top: 45px;
+}
+
+.CatalogueItem .subtitle::before {
+	content: " (";
+}
+
+.CatalogueItem .subtitle::after {
+	content: ") ";
+}
+
+.CatalogueItem .year,
+.CatalogueItem .season,
+.CatalogueItem .language,
+.CatalogueItem .size {
+	background: #666;
+	text-shadow: none;
+	color: black;
+	border-radius: 3px;
+	margin-right: 4px;
+	padding: 0px 3px;
+	font-size: .8em;
+	font-weight: bold;
+	display: inline-block;
+}
+
+
+.CatalogueItem .rating {
+	position: absolute;
+	color: black;
+	top: 5px;
+	right: 5px;
+	height: 30px;
+	width: 30px;
+	line-height: 34px;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 2px 0 0 var(--color1), -2px 0 0 var(--color1), 0 2px 0 var(--color1), 0 -2px 0 var(--color1), 1px 1px var(--color1), -1px -1px 0 var(--color1), 1px -1px 0 var(--color1), -1px 1px 0 var(--color1);
+	background-size: 100%;
+	background-image: var(--image-star);
+}
+
+.CatalogueMedia.playable::after,
+.CatalogueMedia.watched::after {
+	content: "";
+	background-size: 100%;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 10px;
+	top: 10px;
+	filter: drop-shadow(1px 1px 1px #00000080);
+	background-repeat: no-repeat;
+}
+
+.CatalogueMedia.playable::after {
+	background-image: var(--image-play);
+}
+
+.CatalogueMedia.watched::after {
+	background-image: var(--image-watched);
+}
+
+.CatalogueMedia.playable.watched::after {
+	background-image: var(--image-play), var(--image-watched);
+	background-position: 0 0, 0 25px;
+	background-size: 20px, 20px;
+	height: 45px;
+}
+
+.CatalogueItemCustom {
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.DiscoveryView.type-home .CatalogueItem {
+	background-position: center 33%;
+}
+
+.DiscoveryView.type-webshare .CatalogueItemCustom {
+	background-size: 30%;
+}
+
+.CatalogueItemCustom.folder {
+	background-image: var(--image-folder);
+}
+
+.CatalogueItemCustom.movie {
+	background-image: var(--image-movie);
+}
+
+.CatalogueItemCustom.series {
+	background-image: var(--image-series);
+}
+
+.CatalogueItemCustom.concert {
+	background-image: var(--image-concert);
+}
+
+.CatalogueItemCustom.fairyTale {
+	background-image: var(--image-fairyTale);
+}
+
+.CatalogueItemCustom.popular {
+	background-image: var(--image-popular);
+}
+
+.CatalogueItemCustom.animated {
+	background-image: var(--image-animated);
+}
+
+.CatalogueItemCustom.watched {
+	background-image: var(--image-watched);
+}
+
+.Dialogue {
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	opacity: 1;
+	transition: opacity .3s ease-in-out;
+}
+
+.Dialogue:not(.visible) {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.Dialogue:not(.visible):not(.transition) {
+	height: 0;
+	overflow: hidden;
+}
+
+.Dialogue .close {
+	position: fixed;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+	background-size: 100%;
+	cursor: pointer;
+	right: 10px;
+	top: 10px;
+	background-image: var(--image-close);
+	filter: drop-shadow(0px 0px 5px black);
+}
+
+.Dialogue .content {
+	padding: 20px;
+	position: relative;
+	transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+.Dialogue::before {
+	position: fixed;
+	content: " ";
+	background: rgba(0, 0, 0, .7);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: -100px; /* fix scroll rendering glitch on android/chrome */
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+}
+
+.Dialogue.scrollable {
+	position: absolute;
+}
+
+.DetailView h1 {
+	overflow-wrap: break-word;
+}
+
+.DetailView .metadata {
+	margin: 0 0 10px 0;
+}
+
+.DetailView .metadata .label {
+	font-weight: bold;
+}
+
+.DetailView .metadata .label::after {
+	content: ": ";
+}
+
+.DetailView .WebshareSetup h1 {
+	font-size: 1.4em;
+	margin-top: 20px;
+}
+
+body:not(.webshare-na) .DetailView .WebshareSetup {
+	display: none;
+}
+
+.webshare-na .DetailView .StreamsView .StreamItem {
+	opacity: .3;
+	pointer-events: none;
+}
+
+.NotificationView .content {
+	background: var(--color1);
+	color: black;
+	transition: transform .3s ease-in-out;
+}
+
+.NotificationView:not(.visible) .content {
+	transform: translateY(-100%);
+}
+
+.NotificationView p {
+	margin-bottom: 40px;
+}
+
+.NotificationView .close {
+	background-image: var(--image-close-notification);
+	right: 20px;
+	bottom: 20px;
+	filter: none;
+	top: auto;
+	position: absolute;
+}
+
+.DetailView .metadata a {
+	margin: 0 5px 0 0;
+}
+
+.StreamsView.loading {
+	background-image: var(--image-spinner);
+	min-height: 50px;
+	background-size: 50px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.StreamOption {
+	border-bottom: 1px dashed #666;
+}
+
+.StreamOption.loading {
+	opacity: .5;
+	pointer-events: none;
+}
+
+.StreamOption .info {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	flex-wrap: wrap;
+	padding: 5px 40px 5px 0;
+	background-size: 30px;
+	background-repeat: no-repeat;
+	background-position: right 4px;
+	background-image: var(--image-play);
+	min-height: 40px;
+}
+
+.StreamOption.loading .info {
+	background-image: var(--image-spinner);
+}
+
+.StreamOption .info :last-child {
+	padding: 0;
+}
+
+.StreamOption .info .language {
+	background: var(--image-audio) no-repeat 0 / 12px;
+	padding-left: 16px;
+}
+
+.StreamOption .info .subtitles {
+	background: var(--image-subtitles) no-repeat 0 / 12px;
+	padding-left: 16px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+
+.StreamOption .info span {
+	padding: 0 10px 0 0;
+}
+
+.StreamOption .info .duration {
+	flex-grow: 1;
+	text-align: right;
+}
+
+.StreamOption .info .domain {
+	opacity: .5;
+	text-transform: uppercase;
+}
+
+.StreamOption .options {
+	text-align: center;
+}
+
+.StreamOption .options .download,
+.StreamOption .options .android,
+.StreamOption .options .play,
+.StreamOption .options .cast,
+.StreamOption .options .kodi,
+.StreamOption .options .kodi2,
+.StreamOption .options .potplayer,
+.StreamOption .options .infuse,
+.StreamOption .options .iina,
+.StreamOption .options .vlc {
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+	background-size: 100%;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 50px;
+	margin: 10px 15px 20px 15px;
+	vertical-align: middle;
+}
+
+.StreamOption .options .download {
+	background-image: var(--image-download);
+}
+
+.StreamOption .options .android {
+	background-image: var(--image-android);
+}
+
+.StreamOption .options .play {
+	background-image: var(--image-play2);
+}
+
+.StreamOption .options .cast {
+	display: none;
+	background-image: var(--image-cast);
+}
+
+.StreamOption .options .kodi,
+.StreamOption .options .kodi2 {
+	display: none;
+	background-image: var(--image-kodi);
+}
+
+.StreamOption .options .vlc {
+	background-image: var(--image-vlc);
+}
+.StreamOption .options .potplayer {
+	background-image: var(--image-potplayer);
+}
+.StreamOption .options .infuse {
+	background-image: var(--image-infuse);
+}
+.StreamOption .options .iina {
+	background-image: var(--image-iina);
+}
+
+.StreamOption .options .loading {
+	background-image: var(--image-spinner);
+}
+
+.StreamOption .options .kodi,
+.StreamOption .options .kodi2,
+.StreamOption .options .android.fix {
+	position: relative;
+}
+
+.StreamOption .options .kodi::before,
+.StreamOption .options .kodi2::before,
+.StreamOption .options .android.fix::before {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	text-indent: 0;
+	background: var(--color1);
+	padding: 0 1px;
+	color: black;
+	line-height: initial;
+	border-radius: 2px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.StreamOption .options .kodi::before {
+	content: "1";
+}
+
+.StreamOption .options .kodi2::before {
+	content: "2";
+}
+
+.StreamOption .options .android.fix::before {
+	content: "mkv";
+}
+
+.cast-ok .StreamOption .options .cast,
+.kodi-defined .StreamOption .options .kodi,
+.kodi2-defined .StreamOption .options .kodi2,
+.kodi-ok .StreamOption .options .kodi,
+.kodi2-ok .StreamOption .options .kodi2 {
+	display: inline-block;
+}
+
+.StreamNA .info {
+	opacity: .5;
+	pointer-events: none;
+}
+
+.AboutView h2 {
+	margin: 15px 0 5px;
+}
+
+.AboutView li.kodi,
+.AboutView li.cast,
+.AboutView li.android,
+.AboutView li.browser,
+.AboutView li.vlc,
+.AboutView li.potplayer,
+.AboutView li.infuse,
+.AboutView li.iina {
+	list-style: none;
+	background-repeat: no-repeat;
+	background-size: 1.2em;
+	background-position: left top;
+	margin-left: 1em;
+	padding: 0 0 .3em 1.5em;
+}
+.AboutView li.iina,
+
+.AboutView li.kodi {
+	background-image: var(--image-kodi);
+}
+
+.AboutView li.vlc {
+	background-image: var(--image-vlc);
+}
+
+.AboutView li.potplayer {
+	background-image: var(--image-potplayer);
+}
+
+.AboutView li.infuse {
+	background-image: var(--image-infuse);
+}
+
+.AboutView li.cast {
+	background-image: var(--image-cast);
+}
+
+.AboutView li.android {
+	background-image: var(--image-android);
+}
+
+.AboutView li.browser {
+	background-image: var(--image-play2);
+}
+
+.AboutView li.android.fix {
+	position: relative;
+}
+
+.AboutView li.android.fix::after {
+	content: "mkv";
+	position: absolute;
+	top: 9px;
+	left: 4px;
+	text-indent: 0;
+	background: var(--color1);
+	padding: 0 1px;
+	color: black;
+	line-height: initial;
+	border-radius: 2px;
+	font-size: 8px;
+	font-weight: bold;
+}

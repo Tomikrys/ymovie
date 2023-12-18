@@ -1,0 +1,61 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start",
+			"type": "npm",
+			"script": "start",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Start debug",
+			"type": "npm",
+			"script": "start-debug",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Build",
+			"type": "npm",
+			"script": "build",
+			"problemMatcher": ["$tsc"],
+			"group": "build"
+		},
+		{
+			"label": "Build Client",
+			"type": "npm",
+			"script": "build-client",
+			"problemMatcher": ["$tsc"],
+			"group": "build"
+		},
+		{
+			"label": "Build & Run Server",
+			"type": "npm",
+			"script": "build-run-server-debug",
+			"problemMatcher": ["$tsc"],
+			"group": "build"
+		},
+		{
+			"label": "Compile TV",
+			"type": "npm",
+			"script": "compile-tv",
+			"problemMatcher": ["$tsc"],
+			"group": "build"
+		},
+		{
+			"label": "Compile Web",
+			"type": "npm",
+			"script": "compile-web",
+			"problemMatcher": ["$tsc"],
+			"group": "build"
+		},
+		{
+			"label": "Prepare Client",
+			"type": "npm",
+			"script": "prepare-client",
+			"problemMatcher": ["$tsc"],
+			"group": "build"
+		}
+	]
+}

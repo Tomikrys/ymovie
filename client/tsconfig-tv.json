@@ -1,0 +1,7 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"outFile": "../dist/client/js/tv.js"
+	},
+	"include": ["src/shared", "src/tv"]
+}

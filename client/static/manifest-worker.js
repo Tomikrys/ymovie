@@ -1,0 +1,1 @@
+this.addEventListener('fetch', event => {});

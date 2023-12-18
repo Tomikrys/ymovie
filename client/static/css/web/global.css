@@ -1,0 +1,90 @@
+@keyframes fadein {from {opacity: 0;} to {opacity: 1;}}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body.initializing,
+body.loading {
+	background-image: var(--image-spinner);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 50px;
+	background-attachment: fixed;
+}
+
+body.initializing * {
+	display: none;
+}
+
+input[type=text],
+input[type=password] {
+	width: 100%;
+	font-size: 1.2em;
+	padding: 2px 5px;
+	background: transparent;
+	border: none;
+	color: white;
+	letter-spacing: inherit;
+	font-weight: bold;
+	border-bottom: 1px dashed #666;
+}
+
+input:focus {
+	border-bottom: 2px solid var(--color1);
+	padding-bottom: 1px;
+}
+
+input::placeholder {
+	color: #999;
+	opacity: .5;
+}
+
+input:focus,
+button:focus,
+textarea:focus {
+	outline: none;
+}
+
+button {
+	border: none;
+	background: none;
+	padding: 0;
+	color: inherit;
+}
+
+a {
+	color: var(--color1);
+}
+
+dt {
+	font-style: italic;
+	font-weight: bold;
+}
+
+h1, h2, p, ul, dl, dd {
+	margin: 0 0 10px 0;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	margin: 0 0 0 2.5em;
+}
+
+*::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: var(--color1);
+	border-radius: 12px;
+	border: 2px solid black;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}

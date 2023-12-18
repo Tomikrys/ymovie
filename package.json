@@ -1,0 +1,33 @@
+{
+	"name": "ymovie",
+	"version": "1.0.0",
+	"description": "ymovie",
+	"main": "server/index.js",
+	"scripts": {
+		"build": "node build/prepare.js && npm run build-client && npm run build-server",
+		"build-client": "npm run prepare-client && npm run compile-tv && npm run compile-web",
+		"build-server": "node server/build/prepare.js",
+		"compile-tv": "tsc --project client/tsconfig-tv.json",
+		"compile-web": "tsc --project client/tsconfig-web.json",
+		"prepare-client": "node client/build/prepare.js",
+		"run": "node dist/server/index.js",
+		"run-debug": "node --inspect dist/server/index.js debug",
+		"start": "npm run build && node build/minify.js && npm run run",
+		"start-debug": "npm run build && npm run run-debug",
+		"build-run-server-debug": "npm run build-server && npm run run-debug"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@babel/core": "^7.20.12",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-preset-minify": "^0.5.2",
+		"csso": "^4.2.0"
+	},
+	"devDependencies": {
+		"typescript": "^4.9.5"
+	},
+	"engines": {
+		"node": ">=18.4.0",
+		"npm": ">=8.12.1"
+	}
+}

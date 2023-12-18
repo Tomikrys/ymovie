@@ -1,0 +1,59 @@
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-size: 2vw;
+}
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	background: black url(/img/bg.webp) no-repeat center/cover;
+	font-family: sans-serif;
+	letter-spacing: -.04em;
+	line-height: 1.3;
+	color: white;
+	overflow: hidden;
+	height: 100%;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+	cursor: default;
+}
+
+input::placeholder {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	opacity: .5;
+}
+
+button {
+	font-size: inherit;
+}
+
+h1 {
+	font-size: 2rem;
+	margin: 0 0 .2em 0;
+	line-height: 1em;
+}
+
+h2 {
+	font-size: 1.4rem;
+	margin: 0 0 .2em 0;
+	line-height: 1em;
+}
+
+p {
+	margin: 0;
+}
+
+button:focus {
+	outline: none;
+}
+
+button:focus.focused,
+.focused {
+	outline: .2rem solid #fec401;
+}

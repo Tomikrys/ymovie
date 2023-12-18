@@ -1,0 +1,20 @@
+{
+	"short_name": "YMovie",
+	"name": "YMovie",
+	"icons": [
+		{
+			"src":"img/logo-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src":"img/logo-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#000",
+	"theme_color": "#fec401",
+	"display": "standalone"
+}

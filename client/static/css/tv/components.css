@@ -1,0 +1,807 @@
+.webshare-ok .Detail .Stream.loading,
+.MediaScreenBase .Row .Item.loading::after,
+.PlayerScreen.loading::after,
+.SearchScreen.loading input {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="32" stroke-width="8" stroke="%23fec401" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round" transform="rotate(68.1026 50 50)"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform></circle></svg>') !important;
+}
+
+.Header {
+	position: absolute;
+	top: 1.5rem;
+	left: 2.5rem;
+	white-space: nowrap;
+}
+
+.Header div {
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 1rem;
+	padding: .25rem 1rem;
+	margin-right: .5rem;
+}
+
+.Header.focused {
+	outline: none;
+}
+
+.screen-about .Header .about,
+.screen-media .Header .media,
+.screen-search .Header .search,
+.screen-setup .Header .setup {
+	background: white;
+	color: black;
+}
+
+.screen-about .Header.focused .about,
+.screen-media .Header.focused .media,
+.screen-search .Header.focused .search,
+.screen-setup .Header.focused .setup {
+	box-shadow: 0 0 0 .2rem #fec401;
+}
+
+.screen-player .Header {
+	display: none;
+}
+
+.Screen {
+	position: absolute;
+	padding: 4rem 2.5rem 1.5rem 2.5rem;
+	display: none;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.screen-about .AboutScreen,
+.screen-media .MediaScreen,
+.screen-player .PlayerScreen,
+.screen-search .SearchScreen,
+.screen-setup .SetupScreen {
+	display: block;
+}
+
+.MediaScreenBase .rows,
+.MediaScreenBase > .Navigation {
+	position: absolute;
+	top: calc(100% - 11rem);
+}
+
+.MediaScreenBase .rows {
+	transition: transform .5s;
+	-webkit-transition: all .5s;
+	will-change: transform;
+	backface-visibility: hidden;
+}
+
+.MediaScreenBase .Row {
+	white-space: nowrap;
+	transition: transform .5s, opacity .5s;
+	-webkit-transition: all .5s;
+	will-change: transform, opacity;
+	backface-visibility: hidden;
+	margin-bottom: 1rem;
+}
+
+.MediaScreenBase .Row.focused,
+.MediaScreenBase .Row:not(.focused) .focused {
+	outline: none;
+}
+
+.MediaScreenBase .Row.up,
+.MediaScreenBase .Row.down {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.MediaScreenBase .Row .Item {
+	width: 5rem;
+	height: 7.5rem;
+	background: linear-gradient(180deg, #222 50%, #000 100%);
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 1rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.MediaScreenBase .Row .Item:not(.loading).movie,
+.MediaScreenBase .Row .Item:not(.loading).series,
+.MediaScreenBase .Row .Item:not(.loading).concert,
+.MediaScreenBase .Row .Item:not(.loading).fairyTale,
+.MediaScreenBase .Row .Item:not(.loading).animated,
+.MediaScreenBase .Row .Item:not(.loading).popular,
+.MediaScreenBase .Row .Item:not(.loading).watched {
+	background: no-repeat center 35%, no-repeat;
+	background-size: 50%, 100%;
+}
+
+.MediaScreenBase .Row .Item:not(.loading).movie {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332.804 332.804" ><path fill="%23fec401" d="M330.804,171.002c-3.6-6.4-12-8.8-18.8-4.8l-45.6,26.4l-11.6,6.8v63.2l10.8,6.4c0.4,0,0.4,0.4,0.8,0.4l44.8,26 c2,1.6,4.8,2.4,7.6,2.4c7.6,0,13.6-6,13.6-13.6v-53.6l0.4-52.8C332.804,175.402,332.404,173.002,330.804,171.002z"/><path fill="%23fec401" d="M64.404,150.602c35.6,0,64.4-28.8,64.4-64.4c0-35.6-28.8-64.4-64.4-64.4s-64.4,28.8-64.4,64.4 C-0.396,121.802,28.804,150.602,64.404,150.602z M64.404,59.802c14.8,0,26.4,12,26.4,26.4c0,14.8-12,26.4-26.4,26.4 c-14.4,0-26.4-12-26.4-26.4C37.604,71.402,49.604,59.802,64.404,59.802z"/><path fill="%23fec401" d="M227.604,154.202c-10.4,5.2-22,8.4-34.4,8.4c-15.2,0-29.6-4.4-41.6-12.4h-45.6c-12,8-26.4,12.4-41.6,12.4 c-12.4,0-24-2.8-34.4-8.4c-9.2,5.2-15.6,15.6-15.6,26.8v97.6c0,18,14.8,32.4,32.4,32.4h164.4c18,0,32.4-14.8,32.4-32.4v-97.6 C243.204,169.802,236.804,159.402,227.604,154.202z"/><path fill="%23fec401" d="M193.204,150.602c35.6,0,64.4-28.8,64.4-64.4c0-35.6-28.8-64.4-64.4-64.4c-35.6,0-64.4,28.8-64.4,64.4 C128.804,121.802,157.604,150.602,193.204,150.602z M193.204,59.802c14.8,0,26.4,12,26.4,26.4c0,14.8-12,26.4-26.4,26.4 c-14.4,0-26.4-12-26.4-26.4C166.804,71.402,178.404,59.802,193.204,59.802z"/></svg>'), 
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item:not(.loading).series {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"%23fec401\" d=\"M22 4v12h-20v-12h20zm2-2h-24v16h24v-16zm-7 18h-10v2h10v-2z\"/></svg>'),
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item:not(.loading).concert {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 512 512\"><path fill=\"%23fec401\" d=\"m506.25 3.191406c-3.632812-2.84375-8.367188-3.859375-12.847656-2.753906l-112.683594 27.832031c-6.699219 1.65625-11.40625 7.664063-11.40625 14.566407v42.421874c0 3.980469 1.582031 7.792969 4.394531 10.609376l-84.851562 84.851562 42.425781 42.425781 84.851562-84.851562c2.816407 2.8125 6.628907 4.394531 10.609376 4.394531 3.976562 0 7.792968-1.582031 10.605468-4.394531l70.257813-70.261719c2.816406-2.8125 4.394531-6.625 4.394531-10.605469v-42.425781c0-4.613281-2.121094-8.964844-5.75-11.808594zm0 0\"/><path fill=\"%23fec401\" d=\"m244.660156 178.949219c-3.335937-3.335938-8.054687-4.910157-12.726562-4.242188-4.675782.667969-8.761719 3.496094-11.03125 7.636719l-10.964844 19.996094c-.667969.148437-2.542969-.046875-4.421875-1.921875-4.773437-4.773438-12.148437-5.773438-18.015625-2.433594l-169.792969 96.515625c-11.636719 6.613281-18.398437 19.019531-17.6523435 32.382812.7500005 13.363282 8.8593745 24.941407 21.1601565 30.210938l93.582031 40.109375 40.105469 93.582031c5.273437 12.300782 16.847656 20.410156 30.210937 21.15625.675781.039063 1.34375.058594 2.007813.058594 12.589844 0 24.097656-6.65625 30.378906-17.707031l96.515625-169.792969c3.335937-5.871094 2.339844-13.246094-2.433594-18.019531-1.878906-1.878907-2.070312-3.753907-1.921875-4.417969l19.992188-10.964844c4.140625-2.269531 6.96875-6.359375 7.636718-11.03125.667969-4.675781-.902343-9.390625-4.242187-12.730468zm-40.660156 192.6875c-2.925781 2.929687-6.765625 4.394531-10.605469 4.394531-3.835937 0-7.675781-1.464844-10.605469-4.394531l-42.425781-42.425781c-5.859375-5.859376-5.859375-15.355469 0-21.214844 5.855469-5.855469 15.355469-5.855469 21.210938 0l42.429687 42.429687c5.855469 5.855469 5.855469 15.355469-.003906 21.210938zm42.429688-42.425781c-2.929688 2.929687-6.769532 4.394531-10.605469 4.394531-3.839844 0-7.679688-1.464844-10.609375-4.394531l-42.425782-42.425782c-5.855468-5.859375-5.855468-15.355468 0-21.214844 5.859376-5.855468 15.355469-5.855468 21.214844 0l42.425782 42.425782c5.855468 5.859375 5.855468 15.355468 0 21.214844zm0 0\"/></svg>'),
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item:not(.loading).fairyTale {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 493.46 493.46\"><path fill=\"%23fec401\" d=\"M397.564,62.201c0-1.62-1.084-3.03-2.656-3.434L254.697,22.856V8.294c0-4.584-3.707-8.294-8.293-8.294 c-4.585,0-8.292,3.718-8.292,8.294l0.015,125.786h-5.799c-1.961,0-3.548,1.588-3.548,3.539v38.398H197.68V137.62 c0-1.952-1.588-3.539-3.549-3.539h-28.152c-1.959,0-3.547,1.588-3.547,3.539v38.398h-13.719h-17.381V137.62 c0-1.952-1.588-3.539-3.547-3.539H99.632c-1.959,0-3.547,1.588-3.547,3.539v38.398v16.117v16.83V237.7 c0,8.86,7.175,16.036,16.036,16.036h23.407L96.149,474.606c-0.842,4.673,0.438,9.476,3.482,13.112 c3.047,3.636,7.55,5.742,12.295,5.742h268.955c4.745,0,9.248-2.105,12.294-5.742c3.044-3.637,4.324-8.44,3.481-13.112 L357.28,253.736h23.405c8.862,0,16.038-7.176,16.038-16.036v-28.735v-16.83v-16.117V137.62c0-1.952-1.588-3.539-3.548-3.539h-28.152 c-1.961,0-3.547,1.588-3.547,3.539v38.398h-17.38h-13.722V137.62c0-1.952-1.586-3.539-3.547-3.539h-28.152 c-1.961,0-3.548,1.588-3.548,3.539v38.398h-31.1V137.62c0-1.952-1.588-3.539-3.547-3.539h-5.768l-0.017-32.534l140.211-35.911 C396.48,65.231,397.564,63.821,397.564,62.201z M284.6,333.917v69.434h-76.375v-69.434c0-21.09,17.09-38.186,38.195-38.186 C267.51,295.73,284.6,312.827,284.6,333.917z\"/></svg>'),
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item:not(.loading).animated {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\"><path fill=\"%23fec401\" d=\"M10.282,36.791V22.13c1.23-0.532,2.767-1.421,4.196-2.885c1.407,0.73,4.807,2.158,10.707,2.729l0.565,0.055l0.337-0.457 c0.028-0.039,2.953-3.899,10.351-3.899c1.022,0,2.095,0.075,3.194,0.224c0.663,1.147,2.59,3.776,6.349,3.776 c1.346,0,2.787-0.35,4.301-1.042V36.35l1.698-1.654c0.233-0.227,5.698-5.684,4.292-15.853c-0.563-4.082-2.323-7.605-4.825-9.668 c-0.644-0.531-1.116-1.365-1.402-2.479c-0.827-3.209-3.847-5.451-7.694-5.714c-2.152-0.146-3.992,0.515-6.028,1.331 c-0.102,0.041-0.256,0.007-0.277-0.05C35.495,0.804,34.117,0,32.163,0c-3.021,0-6.896,1.86-10.129,4.811 c0.006-0.889,0.192-1.685,0.695-1.937l1.685-0.843l-1.642-0.923c-0.074-0.042-1.842-1.021-4.162-1.021 c-1.94,0-3.681,0.661-5.172,1.966c-1.237,1.081-2.136,2.595-2.599,4.377c-0.095,0.364-0.191,0.755-0.277,1.139 c-0.043,0.189-0.219,0.24-0.306,0.24c-0.103,0-0.157-0.052-0.224-0.132c-0.458-0.559-1.13-0.88-1.844-0.88 c-0.932,0-1.739,0.53-2.107,1.385c-1.987,4.612-5.728,16.421,2.425,26.43L10.282,36.791z\"/><path fill=\"%23fec401\" d=\"M48.282,41.09V23.414c-0.784,0.172-1.553,0.259-2.301,0.259c-3.98,0-6.344-2.295-7.509-3.898 c-0.698-0.067-1.38-0.102-2.034-0.102c-6.22,0-8.663,2.989-8.764,3.116l-0.987,1.34l-1.694-0.164 c-4.868-0.471-8.166-1.509-10.139-2.34c-0.795,0.673-1.654,1.26-2.572,1.756v19.032l-4-4.911v13.477c0,2.757,2.243,5,5,5h3v1.694 c0,1.271,1.034,2.306,2.306,2.306h23.389c1.271,0,2.306-1.034,2.306-2.306v-1.694h3c2.757,0,5-2.243,5-5V37.193L48.282,41.09z M17.423,35.07c-0.91-0.795-1.535-1.807-1.808-2.924c-0.181-0.739-0.144-1.234-0.113-1.438C15.713,28.591,17.353,27,19.331,27 c0.972,0,1.867,0.366,2.546,1.006C22.571,27.371,23.49,27,24.467,27c1.977,0,3.617,1.591,3.829,3.708 c0.031,0.204,0.068,0.699-0.113,1.439c-0.272,1.116-0.898,2.128-1.809,2.925l-3.855,3.321c-0.188,0.161-0.42,0.242-0.653,0.242 c-0.235,0-0.471-0.083-0.659-0.248L17.423,35.07z M30.976,53.5c-5.79,0-10.5-4.71-10.5-10.5c0-0.553,0.448-1,1-1h19 c0.552,0,1,0.447,1,1C41.476,48.79,36.766,53.5,30.976,53.5z M46.183,32.147c-0.272,1.116-0.898,2.128-1.809,2.925l-3.855,3.321 c-0.188,0.161-0.42,0.242-0.653,0.242c-0.235,0-0.471-0.083-0.659-0.248l-3.785-3.317c-0.91-0.795-1.535-1.807-1.808-2.924 c-0.181-0.739-0.144-1.234-0.113-1.438C33.713,28.591,35.353,27,37.331,27c0.972,0,1.867,0.366,2.546,1.006 C40.571,27.371,41.49,27,42.467,27c1.977,0,3.617,1.591,3.829,3.708C46.327,30.912,46.364,31.407,46.183,32.147z\"/></svg>'),
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item:not(.loading).popular {
+	background-image: url('data:image/svg+xml;utf8,<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23fec401\" d=\"m374.686 190.48-27.697-43.868-51.839-2.053c-12.398-.491-18.879-15.03-10.941-24.576l33.161-39.898-14.067-49.937c-3.363-11.941 8.46-22.601 19.992-18l48.192 19.209 43.146-28.81c10.321-6.889 24.107 1.062 23.298 13.451l-3.377 51.77 40.732 32.132c9.742 7.686 6.438 23.255-5.593 26.314l-50.28 12.786-17.972 48.667c-4.286 11.61-20.107 13.34-26.755 2.813z\"/><path fill=\"%23fec401\" d=\"m91.011 422.022c8.284 0 15 6.716 15 15v60c0 8.284-6.716 15-15 15h-76c-8.28 0-15-6.72-15-15v-60c0-8.28 6.72-15 15-15z\"/><path fill=\"%23fec401\" d=\"m226.011 362.022c8.284 0 15 6.716 15 15v120c0 8.284-6.716 15-15 15h-75c-8.284 0-15-6.716-15-15v-120c0-8.28 6.72-15 15-15z\"/><path fill=\"%23fec401\" d=\"m361.011 302.022c8.284 0 15 6.716 15 15v180c0 8.284-6.716 15-15 15h-75c-8.284 0-15-6.716-15-15v-180c0-8.28 6.72-15 15-15z\"/><path fill=\"%23fec401\" d=\"m512.011 497.022c0 8.284-6.716 15-15 15h-76c-8.284 0-15-6.716-15-15v-240c0-8.284 6.716-15 15-15h76c8.284 0 15 6.716 15 15z\"/><path fill=\"%23fec401\" d=\"m76.011 332.022c-8.284 0-15-6.716-15-15 0-24.813 20.187-45 45-45h60c8.271 0 15-6.729 15-15 0-24.813 20.187-45 45-45h60c8.271 0 15-6.729 15-15 0-8.284 6.716-15 15-15s15 6.716 15 15c0 24.813-20.187 45-45 45h-60c-8.271 0-15 6.729-15 15 0 24.813-20.187 45-45 45h-60c-8.271 0-15 6.729-15 15 0 8.285-6.716 15-15 15z\"/></svg>'),
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item:not(.loading).watched {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 932.15 932.15"><path fill="%23fec401" d="M466.075,161.525c-205.6,0-382.8,121.2-464.2,296.1c-2.5,5.3-2.5,11.5,0,16.9c81.4,174.899,258.601,296.1,464.2,296.1 s382.8-121.2,464.2-296.1c2.5-5.3,2.5-11.5,0-16.9C848.875,282.725,671.675,161.525,466.075,161.525z M466.075,676.226 c-116.1,0-210.1-94.101-210.1-210.101c0-116.1,94.1-210.1,210.1-210.1c116.1,0,210.1,94.1,210.1,210.1 S582.075,676.226,466.075,676.226z"/><circle fill="%23fec401" cx="466.075" cy="466.025" r="134.5"/></svg>'),
+		linear-gradient(180deg, #222 50%, #000 100%);
+}
+
+.MediaScreenBase .Row .Item.loading::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background: no-repeat center 40% / 3rem;
+}
+
+.MediaScreenBase.focus-detail .Row {
+	opacity: 0;
+}
+
+.MediaScreenBase .Row .Item .label {
+	position: absolute;
+	bottom: .5rem;
+	left: .5rem;
+	right: .5rem;
+	text-align: center;
+	font-size: .8rem;
+	white-space: initial;
+}
+
+.MediaScreenBase .Row .Item img {
+	position: absolute;
+	width: 100%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+.MediaScreenBase .Row .Item img.missing,
+.MediaScreenBase .Row .Item img.error {
+	width: 50%;
+}
+
+.MediaScreenBase > .Navigation {
+	left: 2.5rem;
+	right: 2.5rem;
+}
+
+.MediaScreenBase:not(.focus-rows) > .Navigation span {
+	opacity: 0 !important;
+}
+
+.MediaScreenBase > .Navigation span.left {
+	left: 0;
+	top: 2.55rem;
+}
+
+.MediaScreenBase > .Navigation span.right {
+	right: 0;
+	top: 2.55rem;
+}
+
+.MediaScreenBase > .Navigation span.up {
+	top: 0;
+	left: calc(50% - 1.2rem);
+}
+
+.MediaScreenBase > .Navigation span.down {
+	top: 5.5rem;
+	left: calc(50% - 1.2rem);
+}
+
+.Detail {
+	padding-right: 40%;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+}
+
+.Detail .Background {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: black;
+	opacity: 0;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+}
+
+.Detail .Background img {
+	opacity: .5;
+}
+
+@supports (filter: brightness(.5)) {
+	.Detail .Background {
+		filter: brightness(.5);
+	}
+
+	.Detail .Background img {
+		opacity: initial;
+	}
+}
+
+.Detail .Background img {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.Detail .Background.visible {
+	opacity: 1;
+}
+
+.Detail h2 {
+	margin: -.1rem 0 .6rem 0;
+}
+
+.Detail > .extra {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: .8rem;
+	line-height: 1.3rem;
+}
+
+.Detail .rating,
+.Detail .duration,
+.Detail .year {
+	margin-right: 1.5rem;
+}
+
+.Detail .rating {
+	padding: 0 0 0 1.2rem;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23fec401" d="M12 .288l2.833 8.718h9.167l-7.417 5.389 2.833 8.718-7.416-5.388-7.417 5.388 2.833-8.718-7.416-5.389h9.167z"/></svg>') no-repeat 0 / 1rem;
+}
+
+.Detail .container {
+	-webkit-mask: linear-gradient(to bottom,white 10rem, transparent 13rem);
+	mask: linear-gradient(to bottom,white 10rem, transparent 13rem);
+}
+
+.MediaScreenBase.focus-detail .rows,
+.MediaScreenBase:not(.focus-detail) .Detail {
+	pointer-events: none;
+}
+
+.focus-detail .Detail .container {
+	-webkit-mask: linear-gradient(to bottom,white 20rem, transparent 23rem);
+	mask: linear-gradient(to bottom,white 20rem, transparent 23rem);
+}
+
+.Detail .container p {
+	clear: both;
+	margin-top: .5rem;
+}
+
+.Detail .Streams {
+	position: absolute;
+	left: calc(60% + 1rem);
+	top: 4rem;
+	right: 2.5rem;
+	transition: transform .5s;
+	-webkit-transition: all .5s;
+	will-change: transform;
+	backface-visibility: hidden;
+}
+
+.Detail .Stream {
+	padding: .3rem .9rem;
+	overflow: hidden;
+}
+
+.Detail .Stream.focused {
+	outline: none;
+	border: .2rem solid #fec401 !important;
+	padding: .1rem 2.5rem .1rem .7rem;
+	border-radius: 1rem;
+}
+
+.MediaScreenBase:not(.focus-detail) .Detail .Navigation span {
+	opacity: 0 !important;
+}
+
+.Detail .Navigation .left {
+	left: calc(60% + 1rem);
+	top: calc(50% - 1.2rem);
+}
+
+.Detail .Navigation .right {
+	top: calc(50% - 1.2rem);
+	right: 2.5rem;
+}
+
+.Detail .Navigation .up {
+	left: calc(80% - 1.8rem);
+	top: 2.5rem;
+}
+
+.Detail .Navigation .down {
+	left: calc(80% - 1.8rem);
+	bottom: 2.5rem;
+}
+
+.webshare-ok .Detail .Stream.focused {
+	background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"%23fec401\" d=\"M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 18v-12l10 6-10 6z\"/></svg>') no-repeat right .7rem center / 1.5rem;
+}
+
+.Detail .Stream span {
+	margin: 0 .5rem 0 0;
+}
+
+.Detail .Stream span::after {
+	content: " ";
+}
+
+.Detail .Stream .language {
+	padding: 0 0 0 1rem;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="115.3px" height="115.3px" viewBox="0 0 115.3 115.3"><path fill="%23ffffff" fill-opacity="0.5" d="M47.9,14.306L26,30.706H6c-3.3,0-6,2.7-6,6v41.8c0,3.301,2.7,6,6,6h20l21.9,16.4c4,3,9.6,0.2,9.6-4.8v-77 C57.5,14.106,51.8,11.306,47.9,14.306z"/><path fill="%23ffffff" fill-opacity="0.5" d="M77.3,24.106c-2.7-2.7-7.2-2.7-9.899,0c-2.7,2.7-2.7,7.2,0,9.9c13,13,13,34.101,0,47.101c-2.7,2.7-2.7,7.2,0,9.899 c1.399,1.4,3.199,2,4.899,2s3.601-0.699,4.9-2.1C95.8,72.606,95.8,42.606,77.3,24.106z"/><path fill="%23ffffff" fill-opacity="0.5" d="M85.1,8.406c-2.699,2.7-2.699,7.2,0,9.9c10.5,10.5,16.301,24.4,16.301,39.3s-5.801,28.8-16.301,39.3 c-2.699,2.7-2.699,7.2,0,9.9c1.4,1.399,3.2,2.1,4.9,2.1c1.8,0,3.6-0.7,4.9-2c13.1-13.1,20.399-30.6,20.399-49.2 c0-18.6-7.2-36-20.399-49.2C92.3,5.706,87.9,5.706,85.1,8.406z"/></svg>') no-repeat 0 / .8em;
+}
+
+.Detail .Stream .subtitles {
+	padding: 0 0 0 1rem;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23ffffff" fill-opacity="0.5" d="M448,0H64C28.704,0,0,28.704,0,64v288c0,35.296,28.704,64,64,64h32v80c0,6.208,3.584,11.872,9.216,14.496 c2.144,0.992,4.48,1.504,6.784,1.504c3.68,0,7.328-1.28,10.24-3.712L232.992,416H448c35.296,0,64-28.704,64-64V64 C512,28.704,483.296,0,448,0z M272,256H144c-8.832,0-16-7.168-16-16c0-8.832,7.168-16,16-16h128c8.832,0,16,7.168,16,16 C288,248.832,280.832,256,272,256z M368,160H144c-8.832,0-16-7.168-16-16c0-8.832,7.168-16,16-16h224c8.832,0,16,7.168,16,16 C384,152.832,376.832,160,368,160z"/></svg>') no-repeat 0 / .8em;
+}
+
+.Detail .Stream .extra {
+	font-size: .8rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.SetupScreen {
+	padding-top: 7rem;
+}
+
+@keyframes pair-blink {
+	50% {opacity: .5;}
+}
+
+.Pair {
+	position: relative;
+}
+
+.Pair::before {
+	content: "";
+	position: absolute;
+	width: 9em;
+	height: 9em;
+	left: calc(50% - 4.5rem);
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"><path fill="%23ffffff" d="M302.933,42.667h-51.2c-7.074,0-12.8,5.726-12.8,12.8s5.726,12.8,12.8,12.8h51.2c7.074,0,12.8-5.726,12.8-12.8 S310.007,42.667,302.933,42.667z"/><path fill="%23ffffff" d="M358.4,0H153.6c-28.228,0-51.2,22.972-51.2,51.2v409.6c0,28.228,22.972,51.2,51.2,51.2h204.8 c28.228,0,51.2-22.972,51.2-51.2V51.2C409.6,22.972,386.628,0,358.4,0z M384,460.8c0,14.14-11.46,25.6-25.6,25.6H153.6 c-14.14,0-25.6-11.46-25.6-25.6V51.2c0-14.14,11.46-25.6,25.6-25.6h204.8c14.14,0,25.6,11.46,25.6,25.6V460.8z"/><circle fill="%23ffffff" cx="256" cy="443.733" r="25.6"/><circle fill="%23ffffff" cx="209.067" cy="55.467" r="12.8"/></svg>') no-repeat center 0 / contain;
+	animation: 1s pair-blink infinite;
+}
+
+.webshare-ok .Pair::before {
+	animation: none;
+	opacity: .5;
+}
+
+.Pair h1 {
+	position: relative;
+	top: 0;
+	text-align: left;
+	display: inline-block;
+	background: rgba(0, 0, 0, .6);
+	padding: .1rem .2rem;
+	margin: 4rem 0 3rem 50%;
+}
+
+.Pair h1::before {
+	content: "TV id:\00000a";
+	white-space: nowrap;
+	font-size: 1rem;
+	position: absolute;
+	top: -1.2rem;
+	left: 0;
+	background: white;
+	padding: .1rem .2rem;
+	line-height: 1rem;
+	font-weight: normal;
+	color: black;
+}
+
+.Pair p,
+.webshare-ok .Pair::after {
+	text-align: center;
+	width: 50%;
+	margin: 1rem auto 0 auto;
+	background: rgba(0, 0, 0, .6);
+	padding: .1rem .2em;
+}
+
+.webshare-ok .Pair p {
+	display: none;
+}
+
+.webshare-ok .Pair::after {
+	content: "TV successfully paired.";
+	color: white;
+	display: block;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.Pair p a {
+	color: inherit;
+	text-decoration-style: dotted;
+}
+
+.webshare-ok .Detail .Pair {
+	display: none;
+}
+
+body:not(.webshare-ok) .Detail .Streams {
+	top: 10rem;
+}
+
+body:not(.webshare-ok) .Detail .Stream {
+	opacity: .5;
+}
+
+.Detail .Pair {
+	margin-top: -6rem;
+}
+
+.Detail .Pair::before {
+	width: 4rem;
+	height: 4rem;
+	left: calc(50% - 4rem);
+}
+
+.Detail .Pair h1 {
+	font-size: 1rem;
+	margin: 2rem 0 1rem 50%;
+}
+
+.Detail .Pair p {
+	width: initial;
+	background: none;
+	margin: 0 0 1rem 0;
+	padding: 0;
+}
+
+.PlayerScreen {
+	background: black;
+}
+
+.PlayerScreen.idle {
+	cursor: none;
+}
+
+.PlayerScreen.loading::after {
+	content: "";
+	position: absolute;
+	width: 4rem;
+	height: 4rem;
+	left: calc(50% - 2rem);
+	top: calc(50% - 2rem);
+	background: no-repeat center / 100%;
+}
+
+.PlayerScreen video {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+.PlayerScreen .Controls {
+	position: absolute;
+	background: rgba(255, 255, 255, .4);
+	left: 50%;
+	width: 80%;
+	height: .5rem;
+	bottom: 5rem;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+}
+
+.PlayerScreen .tracks {
+	position: absolute;
+	bottom: 2.5rem;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+	right: 5rem;
+}
+
+.PlayerScreen.idle .Controls,
+.PlayerScreen.idle .tracks {
+	opacity: 0;
+}
+
+.PlayerScreen .Controls.focused {
+	outline: none;
+}
+
+.PlayerScreen .Controls .thumb {
+	position: absolute;
+	background: black url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ffffff" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 18v-12l10 6-10 6z"/></svg>') no-repeat center / 2rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 100%;
+	top: -.75rem;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+
+.PlayerScreen.paused .Controls .thumb {
+	background-image: url('data:image/svg+xml;utf8,<svg height="512" viewBox="0 0 565.648 565.648" width="512" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" d="m282.824 0c-155.947 0-282.824 126.877-282.824 282.824s126.877 282.824 282.824 282.824 282.824-126.877 282.824-282.824-126.877-282.824-282.824-282.824zm-35.353 388.883h-70.706v-212.118h70.706zm141.412 0h-70.706v-212.118h70.706z"/></svg>');
+}
+
+.PlayerScreen .Controls.focused .thumb {
+	border: .2rem solid #fec401;
+	top: -.9rem;
+	width: 2.3rem;
+	height: 2.3rem;
+	bottom: 3.85rem;
+}
+
+.PlayerScreen .Controls .time {
+	position: absolute;
+	right: 0;
+	top: -1.5rem;
+}
+
+.OSK {
+	position: absolute;
+	top: 6.5rem;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+}
+
+.OSK .Key {
+	border: none;
+	background: white;
+	width: 2.4rem;
+	float: left;
+	padding: .2rem;
+	margin: 0 .1rem .1rem 0;
+	text-align: center;
+	font-weight: bold;
+}
+
+.OSK .Key.focused {
+	position: relative;
+}
+
+.OSK .Key.action-a,
+.OSK .Key.action-k,
+.OSK .Key.action-u {
+	clear: both;
+}
+
+.OSK .Key.action-SPACE,
+.OSK .Key.action-DEL {
+	width: 4.9rem;
+}
+
+.SearchScreen input {
+	position: absolute;
+	width: 24.9rem;
+	height: 1rem;
+	background: rgba(0, 0, 0, .6);
+	border: none;
+	border-bottom: 1px dashed #666;
+	color: white;
+	font-size: 1rem;
+	padding: 1rem;
+}
+
+.SearchScreen.loading input {
+	background-repeat: no-repeat;
+	background-position: center right;
+	background-size: 2rem;
+}
+
+.SearchScreen:not(.focus-osk) .OSK,
+.SearchScreen:not(.focus-osk) input {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.SearchScreen.focus-osk .Detail {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.Notification {
+	opacity: 0;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	background: #fec401;
+	color: black;
+	padding: 4rem 2.5rem 1rem;
+}
+
+.Notification.visible {
+	opacity: 1;
+}
+
+.Help {
+	position: absolute;
+	left: 50%;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .6);
+	color: white;
+	padding: 1.5rem 2.5rem 1.5rem 1rem;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+}
+
+.Help.visible {
+	opacity: 1;
+}
+
+.Help .instructions span {
+	display: inline-block;
+	width: 3rem;
+}
+
+.Help .instructions button {
+	border-radius: .3rem;
+	border: .1rem solid white;
+	background: none;
+	color: inherit;
+	font-size: .8rem;
+	width: 3rem;
+	margin-left: .5rem;
+}
+
+.Help .log {
+	position: absolute;
+	top: 12.5rem;
+	right: 2.5rem;
+	bottom: 1.5rem;
+	left: 1rem;
+	overflow: hidden;
+	font-size: .8rem;
+}
+
+.Help .log code {
+	color: red;
+	font: bold 1em monospace;
+	margin-right: .5rem;
+}
+
+.AudioTracks,
+.TextTracks {
+	list-style: none;
+	margin: 0 0 0 .5rem;
+	padding: 0;
+	display: inline-block;
+}
+
+.AudioTracks.focused,
+.AudioTracks .focused,
+.TextTracks.focused,
+.TextTracks .focused {
+	outline: none;
+}
+
+.AudioTracks li,
+.TextTracks li {
+	margin-top: .2rem;
+	border-radius: 1rem;
+	padding: .15rem 1rem;
+	text-align: center;
+	background: rgba(0, 0, 0, .6);
+	border: .2rem solid transparent;
+}
+
+.AudioTracks:not(:hover):not(.focused) li:not(.current),
+.TextTracks:not(:hover):not(.focused) li:not(.current) {
+	display: none;
+}
+
+.AudioTracks .current,
+.TextTracks .current {
+	color: black;
+	padding: .15rem .5rem .15rem 1.5rem;
+}
+
+.AudioTracks .current {
+	background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="115.3px" height="115.3px" viewBox="0 0 115.3 115.3"><path fill="%23000000" d="M47.9,14.306L26,30.706H6c-3.3,0-6,2.7-6,6v41.8c0,3.301,2.7,6,6,6h20l21.9,16.4c4,3,9.6,0.2,9.6-4.8v-77 C57.5,14.106,51.8,11.306,47.9,14.306z"/><path fill="%23000000" d="M77.3,24.106c-2.7-2.7-7.2-2.7-9.899,0c-2.7,2.7-2.7,7.2,0,9.9c13,13,13,34.101,0,47.101c-2.7,2.7-2.7,7.2,0,9.899 c1.399,1.4,3.199,2,4.899,2s3.601-0.699,4.9-2.1C95.8,72.606,95.8,42.606,77.3,24.106z"/><path fill="%23000000" d="M85.1,8.406c-2.699,2.7-2.699,7.2,0,9.9c10.5,10.5,16.301,24.4,16.301,39.3s-5.801,28.8-16.301,39.3 c-2.699,2.7-2.699,7.2,0,9.9c1.4,1.399,3.2,2.1,4.9,2.1c1.8,0,3.6-0.7,4.9-2c13.1-13.1,20.399-30.6,20.399-49.2 c0-18.6-7.2-36-20.399-49.2C92.3,5.706,87.9,5.706,85.1,8.406z"/></svg>') no-repeat .3rem center / 1rem;
+}
+
+.TextTracks .current {
+	background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23000000" d="M448,0H64C28.704,0,0,28.704,0,64v288c0,35.296,28.704,64,64,64h32v80c0,6.208,3.584,11.872,9.216,14.496 c2.144,0.992,4.48,1.504,6.784,1.504c3.68,0,7.328-1.28,10.24-3.712L232.992,416H448c35.296,0,64-28.704,64-64V64 C512,28.704,483.296,0,448,0z M272,256H144c-8.832,0-16-7.168-16-16c0-8.832,7.168-16,16-16h128c8.832,0,16,7.168,16,16 C288,248.832,280.832,256,272,256z M368,160H144c-8.832,0-16-7.168-16-16c0-8.832,7.168-16,16-16h224c8.832,0,16,7.168,16,16 C384,152.832,376.832,160,368,160z"/></svg>') no-repeat .3rem center / 1rem;
+}
+
+.AudioTracks.focused .focused,
+.AudioTracks li:hover,
+.TextTracks.focused .focused,
+.TextTracks li:hover {
+	border-color: #fec401;
+}
+
+.Navigation span {
+	opacity: 0;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	will-change: opacity;
+	position: absolute;
+	width: 2rem;
+	height: 2rem;
+	display: block;
+	border: .2rem solid black;
+	border-radius: 100%;
+	background: black url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23fec401" d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M313.749,347.584 c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251L176.917,271.083 c-8.341-8.341-8.341-21.824,0-30.165l106.667-106.667c8.341-8.341,21.824-8.341,30.165,0s8.341,21.824,0,30.165L222.165,256 L313.749,347.584z"/></svg>') no-repeat 0 / 100%;
+}
+
+body.mouseActive .Navigation span {
+	opacity: .5;
+}
+
+.Navigation span:hover {
+	opacity: 1 !important;
+}
+
+.Navigation span.right {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+
+.Navigation span.up {
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+}
+
+.Navigation span.down {
+	transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+}
